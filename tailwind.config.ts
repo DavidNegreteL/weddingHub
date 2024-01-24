@@ -9,11 +9,29 @@ const config: Config = {
   important: "#__next",
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['"Montserrat"'],
+        cormorant: ['"Cormorant"'],
+      },
+      letterSpacing: {
+        tightest: "-.075em",
+        tighter: "-.05em",
+        tight: "-.025em",
+        normal: "0",
+        wide: ".025em",
+        wider: ".05em",
+        widest: ".75em",
+      },
+      aspectRatio: {
+        "2/1": "2 / 1",
+      },
+      borderRadius: {
+        lg: "80px",
+      },
       colors: {
-        "primary-1": "#567782",
-        "secondary-1": "#FEF7F1",
-        "secondary-2": "#ECD2C4",
-        text: "#343434",
+        "primary-1": "#C3937C",
+        "secondary-1": "#EAD9C9",
+        text: "#787878",
       },
       spacing: {
         xs: "4px",
