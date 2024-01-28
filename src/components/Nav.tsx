@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 
-const pages = ["La Boda", "Agenda", "¿Cómo llegar?"];
+const pages = ["La Boda", "¿Cómo llegar?"];
 
 function ResponsiveNav() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
