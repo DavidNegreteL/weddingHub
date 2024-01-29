@@ -26,11 +26,13 @@ const config: Config = {
         "2/1": "2 / 1",
       },
       borderRadius: {
+        md: "32px",
         lg: "80px",
       },
       colors: {
         "primary-1": "#C3937C",
         "secondary-1": "#EAD9C9",
+        white: "#FFF",
         text: "#787878",
       },
       spacing: {

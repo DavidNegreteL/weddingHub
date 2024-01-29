@@ -11,7 +11,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 
-const pages = ["La Boda", "Agenda", "¿Cómo llegar?"];
+const pages = ["La Boda", "¿Cómo llegar?"];
+const sectionId = ["la-boda", "como-llegar"];
 
 function ResponsiveNav() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -26,7 +27,7 @@ function ResponsiveNav() {
 
   return (
     <AppBar position="static" className="h-min bg-secondary-1 shadow-none">
-      <Container className="w-full max-w-full">
+      <Container className="w-full max-w-full p-0">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -36,6 +37,7 @@ function ResponsiveNav() {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+              className="p-0"
             >
               <MenuIcon className="text-text" />
             </IconButton>
@@ -57,9 +59,9 @@ function ResponsiveNav() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {pages.map((page, index) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link href={`#${sectionId[index]}`}>{page}</Link>
                 </MenuItem>
               ))}
             </Menu>
