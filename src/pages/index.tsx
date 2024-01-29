@@ -6,8 +6,7 @@ import Section from "@/components/Section";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import CountdownTimer from "@/components/Countdown";
-const inter = Inter({ subsets: ["latin"] });
-
+import Parents from "@/components/Parents";
 export default function Home() {
   return (
     <>
@@ -21,6 +20,7 @@ export default function Home() {
           text="Queridos amigos y familiares, les hacemos llegar nuestra invitación de boda. ¡Esperamos que puedan acompañarnos y compartir con nosotros la alegría de este gran día!"
           image="/images/section_1.jpeg"
           imageVariant="rounded-bottom-right"
+          id="la-boda"
         >
           <Image
             src={"/images/decoration_2.png"}
@@ -36,7 +36,7 @@ export default function Home() {
             height={480}
             className="absolute bottom-[9px] rotate-[35px] right-[-6px] md:bottom-[9px] md:left-[262px]"
           />
-          <Container className="relative flex flex-col items-center gap-8 p-0">
+          <Container className="relative flex flex-col items-center gap-8 p-0 mt-5">
             <Image
               src={"/images/decoration_1.png"}
               alt="decoracion floral"
@@ -45,7 +45,7 @@ export default function Home() {
               className="absolute -rotate-90 w-24 top-20 left-20 md:top-20 md:left-60"
             />
             <Typography className="text-text text-2xl font-cormorant mb-16">
-              15 de Junio
+              15 de Junio de 2024
             </Typography>
             <Container className="flex justify-around items-center">
               <Typography className="text-text text-2xl font-cormorant">
@@ -71,12 +71,14 @@ export default function Home() {
             </Container>
           </Container>
         </Section>
+        <Parents />
         <Section
           direction="right"
           title="Recepción"
-          text="Queridos amigos y familiares, les hacemos llegar nuestra invitación de boda. ¡Esperamos que puedan acompañarnos y compartir con nosotros la alegría de este gran día!"
+          text="Estamos muy contentos de poder festejar y brindar con ustedes."
           image="/images/section_2.jpeg"
           imageVariant="rounded-bottom-left"
+          id="recepcion"
         >
           <Image
             src={"/images/decoration_2.png"}
@@ -92,7 +94,7 @@ export default function Home() {
             height={480}
             className="absolute bottom-[9px] rotate-[35px] scale-x-[-1] md:bottom-[9px] md:right-[262px]"
           />
-          <Container className="relative flex flex-col items-center gap-8 p-0">
+          <Container className="relative flex flex-col items-center gap-8 p-0 mt-5">
             <Container className="flex justify-center gap-4 items-center p-0 mt-3">
               <Typography className="text-text text-2xl font-cormorant">
                 Recepción
@@ -118,7 +120,8 @@ export default function Home() {
         </Section>
         <Section
           title="¿Cómo llegar?"
-          text="Para llegar de la iglesia al salón en transporte publico, caminar 5 calles con dirección al sur hasta llegar a la 11 oriente y 4 sur y tomar la ruta 4 que diga FUENTES - PASEO BRAVO, tiempo estimado de recorrido 1hr  y en particular de 30 a 40 min aproximadamente."
+          text="Para llegar de la iglesia al salón en transporte publico, caminar 5 calles con dirección al sur hasta llegar a la 11 oriente y 4 sur y tomar la ruta 4 que diga FUENTES - PASEO BRAVO, tiempo estimado de recorrido 1hr y en autoparticular de 30 a 40 min aproximadamente."
+          id="como-llegar"
         ></Section>
       </Container>
       <Footer />

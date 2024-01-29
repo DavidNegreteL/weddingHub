@@ -10,11 +10,11 @@ function Hero() {
           textAlign={"center"}
           className="text-text text-xs mt-24 tracking-widest font-montserrat"
         >
-          NOS CASAMOS
+          ¡NOS CASAMOS!
         </Typography>
         <Typography
           textAlign={"left"}
-          className="text-primary-1 text-6xl mt-3 font-cormorant"
+          className="text-primary-1 text-4xl mt-3 font-cormorant md:text-6xl"
         >
           EL MEJOR DÍA DE NUESTRAS VIDAS
         </Typography>
@@ -31,7 +31,7 @@ function Hero() {
         alt="ara-y-lalo-1"
         width={360}
         height={480}
-        className="rounded-tl-lg rounded-br-lg ml-0 grayscale hover:grayscale-0 duration-300 md:ml-auto"
+        className="rounded-tl-lg rounded-br-lg ml-0 duration-300 md:ml-auto"
       />
       <Image
         src={"/images/hero_decoration_left_2.png"}
