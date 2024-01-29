@@ -17,14 +17,14 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   }) => {
     if (completed) {
       return (
-        <Typography className="text-primary-1 text-6xl mt-3 font-cormorant">
+        <Typography className="text-primary-1 text-4xl mt-3 font-cormorant md:text-6xl">
           {"¡Es hoy!"}
         </Typography>
       );
     } else {
       return (
         <Container className="p-4 m-0 mb-40 flex flex-col items-center gap-5 md:max-w-full">
-          <Typography className="text-primary-1 text-6xl mt-3 font-cormorant">
+          <Typography className="text-primary-1 text-4xl mt-3 font-cormorant md:text-6xl">
             Faltan
           </Typography>
           <Box className="flex gap-7 md:gap-12">

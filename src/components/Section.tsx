@@ -11,6 +11,7 @@ function Section({
   text,
   children,
   imageVariant,
+  id,
 }: {
   direction?: string;
   image?: string;
@@ -19,6 +20,7 @@ function Section({
   text?: string;
   children?: ReactNode | ReactNode[];
   imageVariant?: string;
+  id: string;
 }) {
   const sectionDirection =
     direction === "right"
@@ -28,16 +30,16 @@ function Section({
       : "relative p-0 m-0 w-full h-full flex flex-col items-center mb-40 md:flex-row-reverse md:justify-center";
   const roundedImage =
     imageVariant === "rounded-bottom-right"
-      ? "rounded-br-lg ml-0 grayscale hover:grayscale-0 duration-300"
+      ? "rounded-br-lg ml-0 duration-300"
       : imageVariant === "rounded-bottom-left"
-      ? "rounded-bl-lg ml-0 grayscale hover:grayscale-0 duration-300"
+      ? "rounded-bl-lg ml-0 duration-300"
       : imageVariant === "rounded-top-left"
-      ? "rounded-tl-lg ml-0 grayscale hover:grayscale-0 duration-300"
+      ? "rounded-tl-lg ml-0 duration-300"
       : imageVariant === "rounded-top-right"
-      ? "rounded-tr-lg ml-0 grayscale hover:grayscale-0 duration-300"
-      : "rounded-tl-lg rounded-br-lg ml-0 grayscale hover:grayscale-0 duration-300";
+      ? "rounded-tr-lg ml-0 duration-300"
+      : "rounded-tl-lg rounded-br-lg ml-0 duration-300";
   return (
-    <Container className={sectionDirection}>
+    <Container className={sectionDirection} id={id}>
       <Container className="flex flex-col justify-center items-start p-0 m-0 w-full mb-9 md:w-1/2">
         {heading ? (
           <Typography
@@ -51,7 +53,7 @@ function Section({
         )}
         <Typography
           textAlign={"left"}
-          className="text-primary-1 text-6xl mt-3 font-cormorant"
+          className="text-primary-1 text-4xl mt-3 font-cormorant md:text-6xl"
         >
           {title}
         </Typography>
