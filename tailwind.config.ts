@@ -26,6 +26,7 @@ const config: Config = {
         "2/1": "2 / 1",
       },
       borderRadius: {
+        sm: "24px",
         md: "32px",
         lg: "80px",
       },

@@ -1,5 +1,4 @@
-import { Inter } from "next/font/google";
-import { Box, Container, Link, Typography } from "@mui/material";
+import { Container, Link, Typography } from "@mui/material";
 import ResponsiveNav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
