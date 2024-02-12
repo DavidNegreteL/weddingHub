@@ -1,4 +1,8 @@
+"use client";
+
 import React, { useState } from "react";
+import { useTheme } from "@mui/material/styles";
+import colors from "@src/styles/colors";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,11 +15,12 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 
-const pages = ["La Boda", "¿Cómo llegar?"];
-const sectionId = ["la-boda", "como-llegar"];
+const pages = ["La Boda", "¿Cómo llegar?", "Confirma tu asistencia"];
+const sectionId = ["la-boda", "como-llegar", "confirmar-asistencia"];
 
 function ResponsiveNav() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const theme = useTheme();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -26,8 +31,21 @@ function ResponsiveNav() {
   };
 
   return (
-    <AppBar position="static" className="h-min bg-secondary-1 shadow-none">
-      <Container className="w-full max-w-full p-0">
+    <AppBar
+      position="static"
+      sx={{
+        height: "min-content",
+        backgroundColor: theme.palette.secondary.main,
+        boxShadow: "none",
+      }}
+    >
+      <Container
+        sx={{
+          width: "100%",
+          maxWidth: "100% !important",
+          padding: 0,
+        }}
+      >
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -37,9 +55,15 @@ function ResponsiveNav() {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-              className="p-0"
+              sx={{
+                padding: 0,
+              }}
             >
-              <MenuIcon className="text-text" />
+              <MenuIcon
+                sx={{
+                  color: colors.singleText,
+                }}
+              />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -59,35 +83,57 @@ function ResponsiveNav() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page, index) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link href={`#${sectionId[index]}`}>{page}</Link>
-                </MenuItem>
-              ))}
+              {pages.map((page, index) => {
+                const sectionLink = `#${sectionId[index]}`;
+                return (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Link href={sectionLink}>{page}</Link>
+                  </MenuItem>
+                );
+              })}
             </Menu>
           </Box>
           <Box
-            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
-            className="gap-m items-center mb-3.5 gap-12"
+            sx={{
+              flexGrow: 1,
+              gap: theme.spacings.md,
+              alignItems: "center",
+              marginBottom: "14px",
+              display: { xs: "none", md: "flex" },
+            }}
           >
-            <Link href={"#"} className="mr-9">
+            <Link
+              href={"#"}
+              style={{
+                marginRight: theme.spacings.lg,
+              }}
+            >
               <Image
                 src={"/images/ara-lalo-logo.png"}
                 alt="logo"
                 width={256}
                 height={200}
-                className="w-full h-auto"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
               />
             </Link>
-            {pages.map((page, index) => (
-              <Link
-                href={"#"}
-                key={`link-${index}-page`}
-                className="text-primary-1 py-2 px-4 font-montserrat"
-              >
-                {page}
-              </Link>
-            ))}
+            {pages.map((page, index) => {
+              const sectionLink = `#${sectionId[index]}`;
+              return (
+                <Link
+                  href={sectionLink}
+                  key={`link-${index}-page`}
+                  style={{
+                    color: colors.primary,
+                    padding: "8px 16px",
+                  }}
+                >
+                  {page}
+                </Link>
+              );
+            })}
           </Box>
         </Toolbar>
       </Container>

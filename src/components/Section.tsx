@@ -57,9 +57,13 @@ function Section({
         >
           {title}
         </Typography>
-        <Typography textAlign={"left"} className="text-text text-s mt-2">
-          {text}
-        </Typography>
+        {text ? (
+          <Typography textAlign={"left"} className="text-text text-s mt-2">
+            {text}
+          </Typography>
+        ) : (
+          <></>
+        )}
         {children}
       </Container>
       {image ? (
