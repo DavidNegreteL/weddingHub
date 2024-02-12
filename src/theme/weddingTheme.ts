@@ -1,10 +1,21 @@
-import { createTheme, PaletteColorOptions } from "@mui/material/styles";
+import { createTheme, Palette, PaletteOptions } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
+  interface Pallete {
+    singleText: Palette["primary"];
+    white: Palette["primary"];
+    black: Palette["primary"];
+  }
   interface PaletteOptions {
-    singleText?: PaletteColorOptions;
-    white?: PaletteColorOptions;
-    black?: PaletteColorOptions;
+    singleText?: PaletteOptions["primary"];
+    white?: PaletteOptions["primary"];
+    black?: PaletteOptions["primary"];
+  }
+}
+
+declare module "@mui/icons-material/Menu" {
+  interface MenuPropsColorOverrides {
+    singleText: true;
   }
 }
 
@@ -18,11 +29,11 @@ declare module "@mui/material/styles" {
       xl: number;
     };
     spacings: {
-      xs: number;
-      sm: number;
-      md: number;
-      lg: number;
-      xl: number;
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
     };
     borderRadius: {
       sm: number;
@@ -41,11 +52,11 @@ declare module "@mui/material/styles" {
       xl?: number;
     };
     spacings: {
-      xs: number;
-      sm: number;
-      md: number;
-      lg: number;
-      xl: number;
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
     };
     borderRadius: {
       sm: number;
@@ -105,11 +116,11 @@ const theme = createTheme({
     fontWeightBold: 700,
   },
   spacings: {
-    xs: 4,
-    sm: 10,
-    md: 20,
-    lg: 40,
-    xl: 80,
+    xs: "4px",
+    sm: "10px",
+    md: "20px",
+    lg: "40px",
+    xl: "80px",
   },
   sizes: {
     xs: 4,

@@ -1,12 +1,5 @@
 import Image from "next/image";
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  List,
-  ListItem,
-} from "@mui/material";
+import { Box, Container, Typography, Button } from "@mui/material";
 import Link from "next/link";
 import PushPinIcon from "@mui/icons-material/PushPin";
 
@@ -35,8 +28,11 @@ function Card({
       ) : (
         <></>
       )}
-
-      <Link href={link} className="absolute top-1.5 right-1.5">
+      <Link
+        href={link}
+        className="absolute top-1.5 right-1.5 flex items-center gap-2 text-text text-sm"
+      >
+        Ir a
         <Image
           alt="logo"
           src={`/images/${logo}_logo.svg`}
@@ -58,9 +54,8 @@ function Card({
       <Button
         variant="contained"
         className="rounded-md bg-primary-1 text-white self-center"
-        disabled={reserved ? true : false}
       >
-        Apartar
+        {reserved ? "Liberar" : "Apartar"}
       </Button>
     </Container>
   );
