@@ -1,24 +1,82 @@
 import Image from "next/image";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
+import colors from "@src/styles/colors";
 
 function Hero() {
+  const theme = useTheme();
   return (
-    <Container className="relative p-0 w-full h-full flex flex-col items-center mb-40 md:flex-row">
-      <Container className="flex flex-col items-start p-0 w-full mb-9 md:w-1/2">
+    <Container
+      sx={{
+        position: "relative",
+        display: "flex",
+        flexDirection: {
+          xs: "column",
+          sm: "column",
+          md: "row",
+          lg: "row",
+          xl: "row",
+        },
+        alignItems: "center",
+        marginBottom: "160px",
+        padding: 0,
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "start",
+          padding: 0,
+          width: {
+            xs: "100%",
+            sm: "100%",
+            md: "50%",
+            lg: "50%",
+            xl: "50%",
+          },
+          marginBottom: theme.spacings.lg,
+        }}
+      >
         <Typography
           textAlign={"center"}
-          className="text-text text-xs mt-24 tracking-widest font-montserrat"
+          sx={{
+            marginTop: "96px",
+            fontSize: "12px",
+            letterSpacing: "0.1em",
+            color: colors.singleText,
+          }}
         >
           ¡NOS CASAMOS!
         </Typography>
         <Typography
           textAlign={"left"}
-          className="text-primary-1 text-4xl mt-3 font-cormorant md:text-6xl"
+          sx={{
+            marginTop: "12px",
+            color: colors.primary,
+            fontWeight: "700",
+            fontSize: {
+              xs: "36px",
+              sm: "36px",
+              md: "60px",
+              lg: "60px",
+              xl: "60px",
+            },
+          }}
         >
           EL MEJOR DÍA DE NUESTRAS VIDAS
         </Typography>
-        <Typography textAlign={"left"} className="text-text text-s mt-2">
+        <Typography
+          textAlign={"left"}
+          sx={{
+            marginTop: "8px",
+            color: colors.singleText,
+            fontSize: "16px",
+          }}
+        >
           Poco a poco iremos revelándonos mutuamente, descubriendo nuestros
           secretos, nuestros pequeños trucos, aprendiendo a complacernos. Y un
           día tú y yo seremos una pareja de amantes perfectos y entonces, en la

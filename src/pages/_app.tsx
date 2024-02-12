@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { ThemeProvider } from "@mui/material/styles";
 import { Montserrat } from "next/font/google";
 import { Cormorant } from "next/font/google";
 const inter = Montserrat({ subsets: ["latin"] });
