@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-async function getGuest(username: string) {
+async function getUser(username: string) {
 	try {
 		return await prisma.guest.findUnique({ where: { username } });
 	} catch (error) {
@@ -29,10 +29,10 @@ export const { auth, signIn, signOut } = NextAuth({
 
 				if (parsedCredentials.success) {
 					const { username, password } = parsedCredentials.data;
-					const guest = await getGuest(username);
-					if (!guest) return null;
-					const passwordsMatch = password == guest.password;
-					if (passwordsMatch) return guest;
+					const user = await getUser(username);
+					if (!user) return null;
+					const passwordsMatch = password == user.password;
+					if (passwordsMatch) return user;
 				}
 				console.log('Invalid credentials');
 				return null;

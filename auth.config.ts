@@ -14,7 +14,8 @@ export const authConfig = {
 			}
 			return true;
 		},
-		session({ session, token, user }) {
+		session({ session, user }) {
+			session.user.id = user.id;
 			return session;
 		},
 	},
