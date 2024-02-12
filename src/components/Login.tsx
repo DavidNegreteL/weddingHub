@@ -12,14 +12,6 @@ const confirmFormSchema = Yup.object().shape({
   password: Yup.string().required("Required"),
 });
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#C3937C", // Ejemplo de color primario
-    },
-  },
-});
-
 export default function Login({ error }: { error: string }) {
   const handleLogin = async (values: { user: string; password: string }) => {
     console.log("Login data:", values);
@@ -37,29 +29,27 @@ export default function Login({ error }: { error: string }) {
         {({ isSubmitting }) => (
           <Form>
             <Box className="relative flex flex-col items-center gap-6 p-0 mt-5 w-full">
-              <ThemeProvider theme={theme}>
-                <Field
-                  name="user"
-                  type="text"
-                  label="Usuario"
-                  as={TextField}
-                  fullWidth
-                  variant="standard"
-                  error={error}
-                  className="w-[250px] md:w-[450px]"
-                />
-                <Field
-                  name="password"
-                  type="password"
-                  label="Contraseña"
-                  as={TextField}
-                  fullWidth
-                  variant="standard"
-                  error={error}
-                  className="w-[250px] md:w-[450px]"
-                  color="primary"
-                />
-              </ThemeProvider>
+              <Field
+                name="user"
+                type="text"
+                label="Usuario"
+                as={TextField}
+                fullWidth
+                variant="standard"
+                error={error}
+                className="w-[250px] md:w-[450px]"
+              />
+              <Field
+                name="password"
+                type="password"
+                label="Contraseña"
+                as={TextField}
+                fullWidth
+                variant="standard"
+                error={error}
+                className="w-[250px] md:w-[450px]"
+                color="primary"
+              />
               <Button
                 type="submit"
                 variant="outlined"
