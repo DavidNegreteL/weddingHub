@@ -14,6 +14,8 @@ datasource db {
 model Guest {
   id            String @id @default(cuid())
   name          String
+  username      String? @unique 
+  password      String?
   status        Int    @default(1)
   max_attendees Int
   attendees     Int
