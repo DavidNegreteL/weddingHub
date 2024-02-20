@@ -103,7 +103,7 @@ function ResponsiveNav() {
             }}
           >
             <Link
-              href={"#"}
+              href={"https://araylalo.vercel.app/home"}
               style={{
                 marginRight: theme.spacings.lg,
               }}

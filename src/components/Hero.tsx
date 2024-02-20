@@ -1,15 +1,14 @@
-import Image from "next/image";
 import ResponsiveImage from "./ResponsiveImage";
 import DecorativeImage from "./DecorativeImage";
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 import colors from "@src/styles/colors";
+import { Box } from "@mui/material";
 
 function Hero() {
   const theme = useTheme();
   return (
-    <Container
+    <Box
       sx={{
         position: "relative",
         display: "flex",
@@ -27,7 +26,7 @@ function Hero() {
         height: "100%",
       }}
     >
-      <Container
+      <Box
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -85,7 +84,7 @@ function Hero() {
           mitad de un abrazo, nos desvaneceremos y aparecerá en la pantalla la
           palabra fin.
         </Typography>
-      </Container>
+      </Box>
       <ResponsiveImage
         imageSrc={"/images/hero.jpeg"}
         altText="ara-y-lalo-1"
@@ -118,14 +117,15 @@ function Hero() {
         height={480}
         configStyles={{
           position: "absolute",
-          top: "-176px",
+          top: "176px",
           right: "-32px",
           [theme.breakpoints.up("sm")]: {
-            right: "-112px",
+            right: "-78px",
+            top: "-176px",
           },
         }}
       />
-    </Container>
+    </Box>
   );
 }
 

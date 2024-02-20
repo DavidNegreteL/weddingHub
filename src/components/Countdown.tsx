@@ -2,7 +2,9 @@
 
 import React from "react";
 import Countdown from "react-countdown";
-import { Container, Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import colors from "@src/styles/colors";
+
 const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   const renderer = ({
     days,
@@ -19,51 +21,229 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   }) => {
     if (completed) {
       return (
-        <Typography className="text-primary-1 text-4xl mt-3 font-cormorant md:text-6xl">
+        <Typography
+          sx={{
+            marginTop: "12px",
+            color: colors.primary,
+            fontWeight: "700",
+            fontSize: {
+              xs: "36px",
+              sm: "36px",
+              md: "60px",
+              lg: "60px",
+              xl: "60px",
+            },
+          }}
+        >
           {"¡Es hoy!"}
         </Typography>
       );
     } else {
       return (
-        <Container className="p-4 m-0 mb-40 flex flex-col items-center gap-5 md:max-w-full">
-          <Typography className="text-primary-1 text-4xl mt-3 font-cormorant md:text-6xl">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "20px",
+            padding: "16px",
+            marginBottom: "160px",
+          }}
+        >
+          <Typography
+            sx={{
+              marginTop: "12px",
+              color: colors.primary,
+              fontWeight: "700",
+              fontSize: {
+                xs: "36px",
+                sm: "36px",
+                md: "60px",
+                lg: "60px",
+                xl: "60px",
+              },
+            }}
+          >
             Faltan
           </Typography>
-          <Box className="flex gap-7 md:gap-12">
-            <Box className="flex flex-col gap-2 items-center">
-              <Typography className="text-primary-1 text-2xl md:text-4xl mt-3 font-cormorant">
+          <Box
+            sx={{
+              display: "flex",
+              gap: {
+                xs: "28px",
+                sm: "28px",
+                md: "48px",
+                lg: "48px",
+                xl: "48px",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <Typography
+                sx={{
+                  marginTop: "12px",
+                  color: colors.primary,
+                  fontWeight: "700",
+                  fontSize: {
+                    xs: "24px",
+                    sm: "24px",
+                    md: "36px",
+                    lg: "36px",
+                    xl: "36px",
+                  },
+                }}
+              >
                 {days}
               </Typography>
-              <Typography className="text-primary-1 text-xl md:text-2xl font-cormorant">
+              <Typography
+                sx={{
+                  marginTop: "12px",
+                  color: colors.primary,
+                  fontWeight: "700",
+                  fontSize: {
+                    xs: "20px",
+                    sm: "20px",
+                    md: "24px",
+                    lg: "24px",
+                    xl: "24px",
+                  },
+                }}
+              >
                 Días
               </Typography>
             </Box>
-            <Box className="flex flex-col gap-2 items-center">
-              <Typography className="text-primary-1 text-2xl md:text-4xl mt-3 font-cormorant">
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <Typography
+                sx={{
+                  marginTop: "12px",
+                  color: colors.primary,
+                  fontWeight: "700",
+                  fontSize: {
+                    xs: "24px",
+                    sm: "24px",
+                    md: "36px",
+                    lg: "36px",
+                    xl: "36px",
+                  },
+                }}
+              >
                 {hours}
               </Typography>
-              <Typography className="text-primary-1 text-xl md:text-2xl font-cormorant">
+              <Typography
+                sx={{
+                  marginTop: "12px",
+                  color: colors.primary,
+                  fontWeight: "700",
+                  fontSize: {
+                    xs: "20px",
+                    sm: "20px",
+                    md: "24px",
+                    lg: "24px",
+                    xl: "24px",
+                  },
+                }}
+              >
                 Horas
               </Typography>
             </Box>
-            <Box className="flex flex-col gap-2 items-center">
-              <Typography className="text-primary-1 text-2xl md:text-4xl mt-3 font-cormorant">
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <Typography
+                sx={{
+                  marginTop: "12px",
+                  color: colors.primary,
+                  fontWeight: "700",
+                  fontSize: {
+                    xs: "24px",
+                    sm: "24px",
+                    md: "36px",
+                    lg: "36px",
+                    xl: "36px",
+                  },
+                }}
+              >
                 {minutes}
               </Typography>
-              <Typography className="text-primary-1 text-xl md:text-2xl font-cormorant">
+              <Typography
+                sx={{
+                  marginTop: "12px",
+                  color: colors.primary,
+                  fontWeight: "700",
+                  fontSize: {
+                    xs: "20px",
+                    sm: "20px",
+                    md: "24px",
+                    lg: "24px",
+                    xl: "24px",
+                  },
+                }}
+              >
                 Minutos
               </Typography>
             </Box>
-            <Box className="flex flex-col gap-2 items-center">
-              <Typography className="text-primary-1 text-2xl md:text-4xl mt-3 font-cormorant">
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <Typography
+                sx={{
+                  marginTop: "12px",
+                  color: colors.primary,
+                  fontWeight: "700",
+                  fontSize: {
+                    xs: "24px",
+                    sm: "24px",
+                    md: "36px",
+                    lg: "36px",
+                    xl: "36px",
+                  },
+                }}
+              >
                 {seconds}
               </Typography>
-              <Typography className="text-primary-1 text-xl md:text-2xl font-cormorant">
+              <Typography
+                sx={{
+                  marginTop: "12px",
+                  color: colors.primary,
+                  fontWeight: "700",
+                  fontSize: {
+                    xs: "20px",
+                    sm: "20px",
+                    md: "24px",
+                    lg: "24px",
+                    xl: "24px",
+                  },
+                }}
+              >
                 Segundos
               </Typography>
             </Box>
           </Box>
-        </Container>
+        </Box>
       );
     }
   };
