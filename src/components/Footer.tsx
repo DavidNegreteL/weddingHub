@@ -1,56 +1,132 @@
-import { Container, Box, Typography, Link } from "@mui/material";
+import { Box, Typography, Link } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
+import colors from "@src/styles/colors";
 
 function Footer() {
   return (
-    <Container className="w-full bg-primary-1 flex flex-col m-0 p-6 gap-2 md:max-w-full">
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "8px",
+        padding: "24px",
+        width: "100%",
+        backgroundColor: colors.primary,
+      }}
+    >
       <Typography
         textAlign={"center"}
-        className="text-white text-4xl mt-3 font-cormorant md:text-6xl"
+        sx={{
+          color: colors.white,
+          fontSize: {
+            xs: "30px",
+            sm: "30px",
+            md: "36px",
+            lg: "36px",
+            xl: "36px",
+          },
+        }}
       >
         ¿Preguntas?
       </Typography>
       <Typography
         textAlign={"center"}
-        className="text-white text-xl font-cormorant"
+        sx={{
+          color: colors.white,
+          fontSize: "20px",
+        }}
       >
         Llama o envía mensaje
       </Typography>
-      <Box className="flex flex-col gap-2 md:flex-row md:justify-center">
-        <Box className="flex flex-row items-center justify-center gap-3 w-full">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: {
+            xs: "col",
+            sm: "col",
+            md: "row",
+            lg: "row",
+            xl: "row",
+          },
+          gap: "8px",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "12px",
+            width: "100%",
+          }}
+        >
           <Typography
             textAlign={"center"}
-            className="text-white text-lg font-cormorant"
+            sx={{
+              color: colors.white,
+              fontSize: "18px",
+            }}
           >
             {"Ara: "}
           </Typography>
           <Link
             href="tel: +52 1 221 106 3672"
             underline="none"
-            className="text-white flex flex-row items-center justify-center gap-3"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "12px",
+              color: colors.white,
+              fontSize: "18px",
+            }}
           >
             {"+52 1 221 106 3672"}
             <CallIcon />
           </Link>
         </Box>
-        <Box className="flex flex-row items-center justify-center gap-3 w-full">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "12px",
+            width: "100%",
+          }}
+        >
           <Typography
             textAlign={"center"}
-            className="text-white text-lg font-cormorant"
+            sx={{
+              color: colors.white,
+              fontSize: "18px",
+            }}
           >
             {"Lalo: "}
           </Typography>
           <Link
             href="tel: +52 1 221 409 0596"
             underline="none"
-            className="text-white flex flex-row items-center justify-center gap-3"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "12px",
+              color: colors.white,
+              fontSize: "18px",
+            }}
           >
             {"+52 1 221 409 0596"}
             <CallIcon />
           </Link>
         </Box>
       </Box>
-    </Container>
+    </Box>
   );
 }
 

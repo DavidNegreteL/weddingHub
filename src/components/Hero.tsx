@@ -1,13 +1,14 @@
-import Image from "next/image";
-import Container from "@mui/material/Container";
+import ResponsiveImage from "./ResponsiveImage";
+import DecorativeImage from "./DecorativeImage";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 import colors from "@src/styles/colors";
+import { Box } from "@mui/material";
 
 function Hero() {
   const theme = useTheme();
   return (
-    <Container
+    <Box
       sx={{
         position: "relative",
         display: "flex",
@@ -25,7 +26,7 @@ function Hero() {
         height: "100%",
       }}
     >
-      <Container
+      <Box
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -83,29 +84,48 @@ function Hero() {
           mitad de un abrazo, nos desvaneceremos y aparecerá en la pantalla la
           palabra fin.
         </Typography>
-      </Container>
-      <Image
-        src={"/images/hero.jpeg"}
-        alt="ara-y-lalo-1"
+      </Box>
+      <ResponsiveImage
+        imageSrc={"/images/hero.jpeg"}
+        altText="ara-y-lalo-1"
         width={360}
         height={480}
-        className="rounded-tl-lg rounded-br-lg ml-0 duration-300 md:ml-auto"
+        configStyles={{
+          borderTopLeftRadius: "80px",
+          borderBottomRightRadius: "80px",
+        }}
       />
-      <Image
-        src={"/images/hero_decoration_left_2.png"}
-        alt="decoracion izquierda"
+      <DecorativeImage
+        imageSrc={"/images/hero_decoration_left_2.png"}
+        altText="decoracion izquierda"
         width={360}
         height={480}
-        className="absolute -bottom-l right-8 md:top-72 right-24"
+        configStyles={{
+          position: "absolute",
+          bottom: "-40px",
+          right: "32px",
+          [theme.breakpoints.up("sm")]: {
+            top: "288px",
+            right: "96px",
+          },
+        }}
       />
-      <Image
-        src={"/images/hero_decoration_right.png"}
-        alt="decoracion derecha"
+      <DecorativeImage
+        imageSrc={"/images/hero_decoration_right.png"}
+        altText="decoracion derecha"
         width={360}
         height={480}
-        className="absolute -top-44 -right-8 md:-right-28"
+        configStyles={{
+          position: "absolute",
+          top: "176px",
+          right: "-32px",
+          [theme.breakpoints.up("sm")]: {
+            right: "-78px",
+            top: "-176px",
+          },
+        }}
       />
-    </Container>
+    </Box>
   );
 }
 

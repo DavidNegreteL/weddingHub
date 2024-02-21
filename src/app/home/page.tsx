@@ -1,19 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { ThemeProvider, useTheme } from "@mui/material/styles";
-import {
-  Box,
-  Container,
-  Link as ExternalLink,
-  Typography,
-} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import colors from "@src/styles/colors";
+import { Box, Link as ExternalLink, Typography } from "@mui/material";
 import Link from "next/link";
 import ResponsiveNav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import Footer from "@/components/Footer";
-import Image from "next/image";
+import DecorativeImage from "@src/components/DecorativeImage";
 import CountdownTimer from "@/components/Countdown";
 import Parents from "@/components/Parents";
 import Login from "@/components/Login";
@@ -53,41 +49,114 @@ export default function Home() {
           imageVariant="rounded-bottom-right"
           id="la-boda"
         >
-          <Image
-            src={"/images/decoration_2.png"}
-            alt="decoracion esquina"
+          <DecorativeImage
+            imageSrc={"/images/decoration_2.png"}
+            altText="decoracion esquina"
             width={180}
             height={480}
-            className="absolute bottom-[306px] left-[-42px] z-[1] md:bottom-[366px] md:left-[-52px]"
+            configStyles={{
+              position: "absolute",
+              bottom: "306px",
+              left: "-42px",
+              zIndex: "1",
+              [theme.breakpoints.up("md")]: {
+                bottom: "348px",
+                left: "-48px",
+              },
+            }}
           />
-          <Image
-            src={"/images/decoration_1.png"}
-            alt="decoracion sub esquina"
+          <DecorativeImage
+            imageSrc={"/images/decoration_1.png"}
+            altText="decoracion sub esquina"
             width={180}
             height={480}
-            className="absolute bottom-[9px] rotate-[35px] right-[-6px] md:bottom-[9px] md:left-[262px]"
+            configStyles={{
+              position: "absolute",
+              bottom: "-18px",
+              right: "-20px",
+              rotate: "346deg",
+              [theme.breakpoints.up("md")]: {
+                bottom: 0,
+                left: "262px",
+              },
+            }}
           />
-          <Container className="relative flex flex-col items-center gap-8 p-0 mt-5">
-            <Image
-              src={"/images/decoration_1.png"}
-              alt="decoracion floral"
+          <Box
+            sx={{
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "32px",
+              marginTop: "20px",
+            }}
+          >
+            <DecorativeImage
+              imageSrc={"/images/decoration_1.png"}
+              altText="decoracion floral"
               width={360}
               height={480}
-              className="absolute -rotate-90 w-24 top-20 left-20 md:top-20 md:left-60"
+              configStyles={{
+                position: "absolute",
+                top: "80px",
+                left: "90px",
+                rotate: "270deg",
+                width: "96px",
+                [theme.breakpoints.up("md")]: {
+                  left: "240px",
+                },
+              }}
             />
-            <Typography className="text-text text-2xl font-cormorant mb-16">
+            <Typography
+              sx={{
+                marginBottom: "64px !important",
+                color: colors.singleText,
+                fontSize: "24px",
+              }}
+            >
               15 de Junio de 2024
             </Typography>
-            <Container className="flex justify-around items-center">
-              <Typography className="text-text text-2xl font-cormorant">
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-around",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: colors.singleText,
+                  fontSize: "24px",
+                }}
+              >
                 Misa
               </Typography>
-              <Typography className="text-text mr-0 text-2xl font-cormorant">
+              <Typography
+                sx={{
+                  marginRight: 0,
+                  color: colors.singleText,
+                  fontSize: "24px",
+                }}
+              >
                 13:00 hrs.
               </Typography>
-            </Container>
-            <Container className="flex flex-col gap-5 justify-center items-center p-0">
-              <Typography className="text-text text-s">
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "20px",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: colors.singleText,
+                  fontSize: "14px",
+                }}
+              >
                 Iglesia La Compañía, Templo Expiatorio del Espíritu Santo Av.
                 Juan de Palafox y 4 Sur 403, Puebla, Centro.
               </Typography>
@@ -95,12 +164,25 @@ export default function Home() {
                 href="https://maps.app.goo.gl/1wr1P6YKHvDVDw356"
                 target="_blank"
                 underline="none"
-                className="rounded-md bg-primary-2 border border-primary-1 py-4 px-8 text-primary-1 mb-16 md:mb-0"
+                sx={{
+                  borderRadius: "32px",
+                  backgroundColor: colors.secondary,
+                  border: `1px solid ${colors.primary}!important`,
+                  padding: "16px 32px",
+                  color: `${colors.primary}!important`,
+                  marginBottom: {
+                    xs: "64px",
+                    sm: "64px",
+                    md: "0px",
+                    lg: "0px",
+                    xl: "0px",
+                  },
+                }}
               >
                 Ir al Mapa
               </ExternalLink>
-            </Container>
-          </Container>
+            </Box>
+          </Box>
         </Section>
         <Parents />
         <Section
@@ -110,14 +192,36 @@ export default function Home() {
           imageVariant="rounded-bottom-right"
           id="confirmar-asistencia"
         >
-          <Image
-            src={"/images/decoration_1.png"}
-            alt="decoracion sub esquina"
+          <DecorativeImage
+            imageSrc={"/images/decoration_1.png"}
+            altText="decoracion sub esquina"
             width={180}
             height={480}
-            className="absolute bottom-[9px] rotate-[35px] right-[-6px] md:bottom-[9px] md:left-[262px]"
+            configStyles={{
+              position: "absolute",
+              bottom: 0,
+              right: "-20px",
+              rotate: "346deg",
+              [theme.breakpoints.up("md")]: {
+                left: "235px",
+              },
+            }}
           />
-          <Login error={error} />
+          <Box
+            sx={{
+              display: "flex",
+              marginBottom: {
+                xs: "64px",
+                sm: "64px",
+                md: "0px",
+                lg: "0px",
+                xl: "0px",
+              },
+              width: "100%",
+            }}
+          >
+            <Login error={error} />
+          </Box>
         </Section>
         <Section
           direction="right"
@@ -127,59 +231,161 @@ export default function Home() {
           imageVariant="rounded-bottom-left"
           id="recepcion"
         >
-          <Image
-            src={"/images/decoration_2.png"}
-            alt="decoracion esquina"
+          <DecorativeImage
+            imageSrc={"/images/decoration_2.png"}
+            altText="decoracion esquina"
             width={150}
             height={480}
-            className="absolute bottom-[329px] right-[-37px] z-[1] scale-x-[-1] md:top-[-37px] md:right-[-45px]"
+            configStyles={{
+              position: "absolute",
+              bottom: "370px",
+              right: "-18px",
+              zIndex: "1",
+              transform: "scaleX(-1)",
+              [theme.breakpoints.up("md")]: {
+                top: "-34px",
+                right: "-41px",
+              },
+            }}
           />
-          <Image
-            src={"/images/decoration_3.png"}
-            alt="decoracion sub esquina"
+          <DecorativeImage
+            imageSrc={"/images/decoration_3.png"}
+            altText="decoracion sub esquina"
             width={180}
             height={480}
-            className="absolute bottom-[9px] rotate-[35px] scale-x-[-1] md:bottom-[9px] md:right-[262px]"
+            configStyles={{
+              position: "absolute",
+              bottom: "9px",
+              left: "-26px",
+              zIndex: "1",
+              rotate: "16deg",
+              [theme.breakpoints.up("md")]: {
+                left: "unset",
+                right: "262px",
+                rotate: "35deg",
+              },
+            }}
           />
-          <Container className="relative flex flex-col items-center gap-8 p-0 mt-5">
-            <Container className="flex justify-center gap-4 items-center p-0 mt-3">
-              <Typography className="text-text text-2xl font-cormorant">
+          <Box
+            sx={{
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "32px",
+              marginTop: "20px",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "16px",
+                marginTop: "12px",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: colors.singleText,
+                  fontSize: "24px",
+                }}
+              >
                 Recepción
               </Typography>
-              <Typography className="text-text mr-0 text-2xl font-cormorant md:mr-20">
+              <Typography
+                sx={{
+                  color: colors.singleText,
+                  fontSize: "24px",
+                }}
+              >
                 15:30 hrs.
               </Typography>
-            </Container>
-            <Container className="flex flex-col gap-5 justify-center items-center p-0">
-              <Typography className="text-text text-s">
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "20px",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: colors.singleText,
+                  fontSize: "16px",
+                }}
+              >
                 Salón Azul, C. 16 de septiembre 12901, Guadalupe Hidalgo.
               </Typography>
               <ExternalLink
                 href="https://maps.app.goo.gl/qou3fYTPRhDYrd676"
                 target="_blank"
                 underline="none"
-                className="rounded-md bg-primary-2 border border-primary-1 py-4 px-8 text-primary-1 mb-16 md:mb-0"
+                sx={{
+                  borderRadius: "32px",
+                  backgroundColor: colors.secondary,
+                  border: `1px solid ${colors.primary}!important`,
+                  padding: "16px 32px",
+                  color: `${colors.primary}!important`,
+                  marginBottom: {
+                    xs: "64px",
+                    sm: "64px",
+                    md: "0px",
+                    lg: "0px",
+                    xl: "0px",
+                  },
+                }}
               >
                 Ir al Mapa
               </ExternalLink>
-            </Container>
-          </Container>
+            </Box>
+          </Box>
         </Section>
         <Section
           title="¿Cómo llegar?"
           text="Para llegar de la iglesia al salón en transporte publico, caminar 5 calles con dirección al sur hasta llegar a la 11 oriente y 4 sur y tomar la ruta 4 que diga FUENTES - PASEO BRAVO, tiempo estimado de recorrido 1hr y en autoparticular de 30 a 40 min aproximadamente."
           id="como-llegar"
         />
-        <Box className="w-full flex flex-col items-center justify-center mt-5">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "20px",
+            width: "100%",
+          }}
+        >
           <Typography
             textAlign={"left"}
-            className="text-primary-1 text-3xl mt-3 font-cormorant md:text-4xl"
+            sx={{
+              marginTop: "12px",
+              color: colors.primary,
+              fontSize: {
+                xs: "30px",
+                sm: "30px",
+                md: "36px",
+                lg: "36px",
+                xl: "36px",
+              },
+            }}
           >
             Aquí puedes hacernos un regalo
           </Typography>
           <Link
             href={"/gifts"}
-            className="mt-4 p-3 rounded-md bg-primary-1 text-white self-center"
+            style={{
+              borderRadius: "32px",
+              backgroundColor: colors.secondary,
+              border: `1px solid ${colors.primary}!important`,
+              padding: "16px 32px",
+              color: `${colors.primary}!important`,
+              marginBottom: "64px",
+              marginTop: "24px",
+            }}
           >
             Ir a regalos
           </Link>
