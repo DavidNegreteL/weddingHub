@@ -1,3 +1,5 @@
+"use client";
+
 import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
@@ -39,7 +41,7 @@ function Hero() {
 						lg: "50%",
 						xl: "50%",
 					},
-					marginBottom: theme.spacings.lg,
+					marginBottom: "40px",
 				}}
 			>
 				<Typography

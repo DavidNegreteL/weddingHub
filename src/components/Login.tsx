@@ -1,11 +1,9 @@
 import { useFormState, useFormStatus } from "react-dom";
 import { Box, Button, FormHelperText, TextField } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { authenticate } from "@/app/lib/actions";
 import colors from "@/styles/colors";
 
 export default function Login() {
-	const theme = useTheme();
 	const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
 	return (
@@ -44,7 +42,7 @@ export default function Login() {
 								xl: "450px",
 							},
 							borderBottom: `1px solid ${colors.primary}!important`,
-							paddingBottom: theme.spacings.xs,
+							paddingBottom: "4px",
 						}}
 					/>
 					<TextField
@@ -62,7 +60,7 @@ export default function Login() {
 								xl: "450px",
 							},
 							borderBottom: `1px solid ${colors.primary}!important`,
-							paddingBottom: theme.spacings.xs,
+							paddingBottom: "4px",
 						}}
 					/>
 					{errorMessage && <FormHelperText>{errorMessage}</FormHelperText>}

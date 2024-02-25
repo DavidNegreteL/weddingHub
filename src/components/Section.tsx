@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { useTheme } from "@mui/material/styles";
 import colors from "@/styles/colors";
 import ResponsiveImage from "./ResponsiveImage";
 
@@ -24,7 +23,6 @@ function Section({
 	imageVariant?: string;
 	id: string;
 }) {
-	const theme = useTheme();
 	const sectionDirectionStyles = {
 		position: "relative",
 		display: "flex",
@@ -52,15 +50,15 @@ function Section({
 		marginLeft: 0,
 		borderBottomRightRadius:
 			imageVariant === "rounded-bottom-right" || !imageVariant
-				? theme.borderRadius.xl
+				? "80px"
 				: 0,
 		borderBottomLeftRadius:
-			imageVariant === "rounded-bottom-left" ? theme.borderRadius.xl : 0,
+			imageVariant === "rounded-bottom-left" ? "80px" : 0,
 		borderTopRightRadius:
-			imageVariant === "rounded-top-right" ? theme.borderRadius.xl : 0,
+			imageVariant === "rounded-top-right" ? "80px" : 0,
 		borderTopLeftRadius:
 			imageVariant === "rounded-top-left" || !imageVariant
-				? theme.borderRadius.xl
+				? "80px"
 				: 0,
 	};
 
