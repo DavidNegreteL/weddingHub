@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { useTheme } from "@mui/material/styles";
 import colors from "@src/styles/colors";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
@@ -12,7 +11,6 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
 import Image from "next/image";
 
 const pages = ["La Boda", "¿Cómo llegar?", "Confirma tu asistencia"];
@@ -20,7 +18,6 @@ const sectionId = ["la-boda", "como-llegar", "confirmar-asistencia"];
 
 function ResponsiveNav() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const theme = useTheme();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -35,7 +32,7 @@ function ResponsiveNav() {
       position="static"
       sx={{
         height: "min-content",
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: colors.secondary,
         boxShadow: "none",
       }}
     >
@@ -96,7 +93,7 @@ function ResponsiveNav() {
           <Box
             sx={{
               flexGrow: 1,
-              gap: theme.spacings.md,
+              gap: "20px",
               alignItems: "center",
               marginBottom: "14px",
               display: { xs: "none", md: "flex" },
@@ -105,7 +102,7 @@ function ResponsiveNav() {
             <Link
               href={"https://araylalo.vercel.app/home"}
               style={{
-                marginRight: theme.spacings.lg,
+                marginRight: "40px",
               }}
             >
               <Image
