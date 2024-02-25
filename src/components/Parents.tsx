@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import colors from "@src/styles/colors";
-import { Box } from "@mui/material";
+import colors from "@/styles/colors";
+
 
 const parentBoxStyles = {
   display: "flex",

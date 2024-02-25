@@ -1,6 +1,7 @@
-import { Box, Typography, Link } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
-import colors from "@src/styles/colors";
+import colors from "@/styles/colors";
+
 
 function Footer() {
   return (
