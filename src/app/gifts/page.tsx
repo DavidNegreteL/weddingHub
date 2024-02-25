@@ -1,12 +1,7 @@
-import {
-  Box,
-  Container,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
-import Card from "../components/Card";
+"use client";
+
+import { Box, Typography, List, ListItem, ListItemText } from "@mui/material";
+import Card from "../../components/Card";
 
 const giftList = [
   {
@@ -29,8 +24,45 @@ const giftList = [
 
 export default function Gifts() {
   return (
-    <Container className="flex h-full flex-col w-full max-w-full bg-secondary-1 p-l md:p-xl">
-      <Box className="p-0 mt-3 mb-3 grid grid-cols-1 gap-y-8 md:grid-cols-4 md:gap-x-6 md:gap-y-8">
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        padding: {
+          xs: "40px",
+          sm: "40px",
+          md: "80px",
+          lg: "80px",
+          xl: "80px",
+        },
+        height: "100%",
+        width: "100%",
+        backgroundColor: "#EAD9C9",
+      }}
+    >
+      <Box
+        sx={{
+          padding: 0,
+          display: "grid",
+          rowGap: "32px",
+          columnGap: {
+            xs: "0px",
+            sm: "0px",
+            md: "32px",
+            lg: "32px",
+            xl: "32px",
+          },
+          gridTemplateColumns: {
+            xs: "repeat(1, minmax(0, 1fr))",
+            sm: "repeat(1, minmax(0, 1fr))",
+            md: "repeat(4, minmax(0, 1fr))",
+            lg: "repeat(4, minmax(0, 1fr))",
+            xl: "repeat(4, minmax(0, 1fr))",
+          },
+          marginTop: "12px",
+          marginBottom: "12px",
+        }}
+      >
         {giftList.map((gift) => {
           return (
             <Card
@@ -46,14 +78,13 @@ export default function Gifts() {
       </Box>
 
       <Typography
-        sx={{ mt: 4, mb: 2 }}
+        sx={{ mt: 4, mb: 2, color: "#000000" }}
         variant="h6"
         component="div"
-        className="text-black"
       >
         Recuerda
       </Typography>
-      <List className="text-black">
+      <List sx={{ color: "#000000" }}>
         <ListItem>
           <ListItemText primary="Si Apartas un regalo no significa que la compra se ha realizado." />
         </ListItem>
@@ -64,6 +95,6 @@ export default function Gifts() {
           <ListItemText primary="La compra se realizar desde el sitio del vendedor o distribuidor, esta página sólo funciona como una galería de posibles regalos." />
         </ListItem>
       </List>
-    </Container>
+    </Box>
   );
 }
