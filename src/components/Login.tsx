@@ -1,10 +1,41 @@
-import { useFormState, useFormStatus } from "react-dom";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useFormStatus } from "react-dom";
 import { Box, Button, FormHelperText, TextField } from "@mui/material";
-import { authenticate } from "@/app/lib/actions";
+import { signIn, signOut } from "next-auth/react";
 import colors from "@/styles/colors";
 
+type LoginInput = {
+	username: string;
+	password: string;
+};
+
 export default function Login() {
-	const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+	const [inputs, setInputs] = useState<LoginInput>({
+		username: "",
+		password: "",
+	});
+	const [errorMsg, setErrorMsg] = useState("");
+	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+		const name = event.target.name;
+		const value = event.target.value;
+		setInputs((values) => ({ ...values, [name]: value }));
+	};
+	const handleSubmit = async (event: FormEvent) => {
+		event.preventDefault();
+		const res = await signIn("credentials", {
+			username: inputs.username,
+			password: inputs.password,
+			redirect: false,
+		});
+		if (!res?.ok) {
+			setErrorMsg("Nombre o contraseña inválidos");
+		} else {
+			setErrorMsg("");
+		}
+	};
+	const handleLogout = async () => {
+		await signOut();
+	};
 
 	return (
 		<Box
@@ -15,7 +46,7 @@ export default function Login() {
 				width: "100%",
 			}}
 		>
-			<form action={dispatch}>
+			<form onSubmit={handleSubmit}>
 				<Box
 					sx={{
 						position: "relative",
@@ -28,11 +59,15 @@ export default function Login() {
 					}}
 				>
 					<TextField
+						id='username'
 						name='username'
 						type='text'
 						label='Usuario'
+						required
 						fullWidth
 						variant='standard'
+						value={inputs.username || ""}
+						onChange={handleChange}
 						sx={{
 							width: {
 								xs: "250px",
@@ -46,11 +81,15 @@ export default function Login() {
 						}}
 					/>
 					<TextField
+						id='password'
 						name='password'
 						type='password'
 						label='Contraseña'
 						fullWidth
+						required
 						variant='standard'
+						value={inputs.password || ""}
+						onChange={handleChange}
 						sx={{
 							width: {
 								xs: "250px",
@@ -63,8 +102,7 @@ export default function Login() {
 							paddingBottom: "4px",
 						}}
 					/>
-					{errorMessage && <FormHelperText>{errorMessage}</FormHelperText>}
-
+					{errorMsg && <FormHelperText>{errorMsg}</FormHelperText>}
 					<LoginButton />
 				</Box>
 			</form>
@@ -73,7 +111,6 @@ export default function Login() {
 }
 
 function LoginButton() {
-	const { pending } = useFormStatus();
 	return (
 		<Button
 			type='submit'
@@ -93,8 +130,6 @@ function LoginButton() {
 					xl: "0px",
 				},
 			}}
-			aria-disabled={pending}
-			disabled={pending}
 		>
 			Entrar
 		</Button>
