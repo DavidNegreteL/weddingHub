@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { PrismaClient } from "@prisma/client";
 
+
 const prisma = new PrismaClient();
 
 async function getUser(username: string) {
@@ -19,26 +20,26 @@ export const authOptions: NextAuthOptions = {
 		strategy: "jwt",
 	},
 	callbacks: {
-		async jwt({ token, account, profile }) {
+		async jwt({ token, account }) {
 			if (account && account.type === "credentials") {
 				token.userId = account.providerAccountId;
 			}
 			return token;
 		},
-		async session({ session, token, user }) {
+		async session({ session, token }) {
 			session.user.id = token.userId;
 			return session;
 		},
 	},
 	pages: {
-		signIn: "/",
+		signIn: "/home",
 	},
 	providers: [
 		Credentials({
 			name: "Credentials",
 			credentials: {
-				username: { label: "Usuario", type: "text" },
-				password: { label: "Contraseña", type: "password" },
+				username: { label: "username", type: "text" },
+				password: { label: "password", type: "password" },
 			},
 			async authorize(credentials, req) {
 				const parsedCredentials = z
@@ -50,6 +51,7 @@ export const authOptions: NextAuthOptions = {
 				if (parsedCredentials.success) {
 					const { username, password } = parsedCredentials.data;
 					const user = await getUser(username);
+					console.log(user);
 					if (!user) return null;
 					const passwordsMatch = password == user.password;
 					if (passwordsMatch) return user;
