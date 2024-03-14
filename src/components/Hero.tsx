@@ -49,7 +49,7 @@ function Hero() {
 					sx={{
 						marginTop: "96px",
 						fontSize: "12px",
-						letterSpacing: "0.1em",
+						letterSpacing: "0.5em",
 						color: colors.singleText,
 					}}
 				>
