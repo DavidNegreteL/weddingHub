@@ -1,10 +1,7 @@
 import { type NextAuthOptions, getServerSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
-import { PrismaClient } from "@prisma/client";
-
-
-const prisma = new PrismaClient();
+import prisma from "@/lib/prisma";
 
 async function getUser(username: string) {
 	try {
@@ -32,7 +29,7 @@ export const authOptions: NextAuthOptions = {
 		},
 	},
 	pages: {
-		signIn: "/home",
+		signIn: "/home#confirmar-asistencia",
 	},
 	providers: [
 		Credentials({
