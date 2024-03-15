@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import prisma from "@/lib/prisma";
 
+
 async function getUser(username: string) {
 	try {
 		return await prisma.guest.findUnique({ where: { username } });
@@ -29,7 +30,7 @@ export const authOptions: NextAuthOptions = {
 		},
 	},
 	pages: {
-		signIn: "/home#confirmar-asistencia",
+		signIn: "/#confirmar-asistencia",
 	},
 	providers: [
 		Credentials({
