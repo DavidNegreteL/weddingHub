@@ -1,12 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import Countdown from "react-countdown";
 import colors from "@/styles/colors";
 
-
 const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
+	const [isClient, setIsClient] = useState(false);
+
+	useEffect(() => {
+		setIsClient(true);
+	}, []);
+
 	const renderer = ({
 		days,
 		hours,
@@ -249,7 +254,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
 		}
 	};
 
-	return <Countdown date={targetDate} renderer={renderer} />;
+	return isClient ? <Countdown date={targetDate} renderer={renderer} /> : null;
 };
 
 export default CountdownTimer;
