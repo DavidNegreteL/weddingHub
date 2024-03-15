@@ -45,7 +45,7 @@ export default async function Home() {
 		if (userData) {
 			if (userData.status === 1) {
 				return (
-					<Confirm name={userData.name} attendees={userData.max_attendees} />
+					<Confirm id={userData.id} name={userData.name} attendees={userData.max_attendees} />
 				);
 			}
 			if (userData.status === 2) {
