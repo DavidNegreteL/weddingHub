@@ -100,7 +100,7 @@ function ResponsiveNav() {
             }}
           >
             <Link
-              href={"https://araylalo.vercel.app/home"}
+              href={"/"}
               style={{
                 marginRight: "40px",
               }}
