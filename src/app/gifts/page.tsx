@@ -1,28 +1,36 @@
-"use client";
-
+import { useState } from "react";
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { getServerAuthSession } from "@auth";
+import prisma from "@/lib/prisma";
 import Card from "../../components/Card";
 
-const giftList = [
-	{
-		guestId: "2387489",
-		link_amazon: "#",
-		link_walmart: "#",
-		image_link:
-			"https://m.media-amazon.com/images/I/51jyLFR7V9L._AC_SL1500_.jpg",
-		name: "Aspiradora",
-	},
-	{
-		guestId: "",
-		link_amazon: "#",
-		link_walmart: "#",
-		image_link:
-			"https://m.media-amazon.com/images/I/71P2piWQ3ML._AC_SL1500_.jpg",
-		name: "Waflera",
-	},
-];
+async function getUser(id: string) {
+	try {
+		return await prisma.guest.findUnique({ where: { id } });
+	} catch (error) {
+		console.error("Failed to fetch guest", error);
+		throw new Error("Failed to fetch guest");
+	}
+}
 
-export default function Gifts() {
+export default async function Gifts() {
+	const giftList = await prisma.gift.findMany({
+		orderBy: [{ guestId: "asc" }, { name: "asc" }],
+	});
+	let userData: {
+		id: string;
+		name: string;
+		username: string | null;
+		password: string | null;
+		status: number;
+		max_attendees: number;
+		attendees: number;
+	} | null = null;
+	const authSession = await getServerAuthSession();
+	if (authSession) {
+		userData = await getUser(authSession.user.id);
+	}
+
 	return (
 		<Box
 			sx={{
@@ -37,7 +45,7 @@ export default function Gifts() {
 				},
 				height: "100%",
 				width: "100%",
-				backgroundColor: "#efe8e0",
+				backgroundColor: "#EAD9C9",
 			}}
 		>
 			<Box
@@ -66,22 +74,24 @@ export default function Gifts() {
 				{giftList.map((gift) => {
 					return (
 						<Card
-							key={`${gift.name}-card`}
-							src={gift.image_link}
-							logo={gift.link_amazon ? "amazon" : "walmart"}
-							link={gift.link_amazon ? gift.link_amazon : gift.link_walmart}
+							key={`${gift.id}-card`}
+							src={gift.image}
+							logo={gift.url_amazon ? "amazon" : "walmart"}
+							link={
+								gift.url_amazon
+									? gift.url_amazon
+									: (gift.url_marketplace as string)
+							}
 							name={gift.name}
 							reserved={gift.guestId}
+							giftId={gift.id}
+							guestId={userData?.id}
 						/>
 					);
 				})}
 			</Box>
 
-			<Typography
-				sx={{ mt: 4, mb: 2, color: "#000000" }}
-				variant='h6'
-				component='div'
-			>
+			<Typography sx={{ mt: 4, mb: 2, color: "#000000" }} variant='h6'>
 				Recuerda
 			</Typography>
 			<List sx={{ color: "#000000" }}>
