@@ -4,6 +4,7 @@ import { Box, Button, FormHelperText, TextField } from "@mui/material";
 import { signIn, signOut } from "next-auth/react";
 import colors from "@/styles/colors";
 
+
 type LoginInput = {
 	username: string;
 	password: string;
@@ -25,7 +26,6 @@ export default function Login() {
 		const res = await signIn("credentials", {
 			username: inputs.username,
 			password: inputs.password,
-			redirect: false,
 		});
 		if (!res?.ok) {
 			setErrorMsg("Nombre o contraseña inválidos");
