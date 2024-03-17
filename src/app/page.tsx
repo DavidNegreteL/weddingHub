@@ -45,7 +45,11 @@ export default async function Home() {
 		if (userData) {
 			if (userData.status === 1) {
 				return (
-					<Confirm id={userData.id} name={userData.name} attendees={userData.max_attendees} />
+					<Confirm
+						id={userData.id}
+						name={userData.name}
+						attendees={userData.max_attendees}
+					/>
 				);
 			}
 			if (userData.status === 2) {
@@ -115,7 +119,7 @@ export default async function Home() {
 						Aquí puedes hacernos un regalo
 					</Typography>
 					<Link
-						href={"/gifts"}
+						href={userData ? "/gifts" : "/#confirmar-asistencia"}
 						style={{
 							borderRadius: "32px",
 							backgroundColor: colors.secondary,
