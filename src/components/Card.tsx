@@ -132,21 +132,23 @@ function Card({
 					width: "100%",
 				}}
 			></Box>
-			<Button
-				variant='contained'
-				sx={{
-					borderRadius: "32px",
-					backgroundColor: "#C3937C !important",
-					color: "#FFFFFF !important",
-					padding: "2px 10px !important",
-					alignSelf: "center",
-					fontSize: "12px !important",
-				}}
-				disabled={reserved !== guestId && !!reserved}
-				onClick={() => handleClick()}
-			>
-				{reserved ? "Liberar" : "Apartar"}
-			</Button>
+			{guestId && (
+				<Button
+					variant='contained'
+					sx={{
+						borderRadius: "32px",
+						backgroundColor: "#C3937C !important",
+						color: "#FFFFFF !important",
+						padding: "2px 10px !important",
+						alignSelf: "center",
+						fontSize: "12px !important",
+					}}
+					disabled={reserved !== guestId && !!reserved}
+					onClick={() => handleClick()}
+				>
+					{reserved ? "Liberar" : "Apartar"}
+				</Button>
+			)}
 		</Box>
 	);
 }
