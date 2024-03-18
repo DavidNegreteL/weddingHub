@@ -1,6 +1,7 @@
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { getServerAuthSession } from "@auth";
 import prisma from "@/lib/prisma";
+import colors from "@/styles/colors";
 import Card from "../../components/Card";
 
 async function getUser(id: string) {
@@ -44,7 +45,7 @@ export default async function Gifts() {
 				},
 				height: "100%",
 				width: "100%",
-				backgroundColor: "#EAD9C9",
+				backgroundColor: colors.secondary,
 			}}
 		>
 			<Box
@@ -67,7 +68,7 @@ export default async function Gifts() {
 						xl: "repeat(4, minmax(0, 1fr))",
 					},
 					marginTop: "12px",
-					marginBottom: "12px",
+					marginBottom: "36px",
 				}}
 			>
 				{giftList.map((gift) => {
@@ -90,7 +91,7 @@ export default async function Gifts() {
 				})}
 			</Box>
 
-			<Typography sx={{ mt: 4, mb: 2, color: "#000000" }} variant='h6'>
+			<Typography sx={{ color: "#000000" }} variant='h6'>
 				Recuerda
 			</Typography>
 			<List sx={{ color: "#000000" }}>
