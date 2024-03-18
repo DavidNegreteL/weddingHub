@@ -1,21 +1,24 @@
-'use client';
-import { Montserrat } from 'next/font/google';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-import '@/styles/globals.css';
-import { ThemeProvider } from '@mui/material/styles';
-import theme from '@src/theme/weddingTheme';
+import { Montserrat } from "next/font/google";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { Analytics } from "@vercel/analytics/react";
+import Footer from "@/components/Footer";
+import ResponsiveNav from "@/components/Nav";
+import "@/styles/globals.css";
 
-const montserrat = Montserrat({ subsets: ['latin'] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 export default function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="es" className={montserrat.className}>
+		<html lang='es' className={montserrat.className}>
 			<body>
 				<AppRouterCacheProvider options={{ enableCssLayer: true }}>
-					<ThemeProvider theme={theme}>{children}+ </ThemeProvider>
+					<ResponsiveNav />
+					{children}
+					<Footer />
+					<Analytics />
 				</AppRouterCacheProvider>
 			</body>
 		</html>
