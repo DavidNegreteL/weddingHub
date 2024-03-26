@@ -3,6 +3,7 @@ import { getServerAuthSession } from "@auth";
 import prisma from "@/lib/prisma";
 import colors from "@/styles/colors";
 import Card from "../../components/Card";
+import CopyToClipboard from "../../components/CopyToClipboard";
 
 async function getUser(id: string) {
 	try {
@@ -90,7 +91,55 @@ export default async function Gifts() {
 					);
 				})}
 			</Box>
-
+			<Box
+				sx={{
+					position: "relative",
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "start",
+					padding: "24px 20px",
+					borderRadius: "24px",
+					border: "1px solid #C3937C !important",
+					backgroundColor: "#FFFFFF",
+					marginBottom: "36px",
+				}}
+			>
+				<Typography sx={{ color: "#000000", fontSize: "18px" }} variant='h6'>
+					También puedes hacernos un regalo por medio de transferencia bancaria
+				</Typography>
+				<Box
+					sx={{
+						display: "flex",
+						flexDirection: "row",
+						justifyContent: {
+							xs: "space-between",
+							sm: "space-between",
+							md: "start",
+							lg: "start",
+							xl: "start",
+						},
+						alignItems: "center",
+						marginTop: "8px",
+						width: "100%",
+					}}
+				>
+					<Typography
+						sx={{
+							color: "#000000",
+							fontWeight: "bold",
+						}}
+					>
+						137650104720099374
+					</Typography>
+					<CopyToClipboard text='137650104720099374' />
+				</Box>
+				<Typography sx={{ color: "#000000", fontSize: "16px" }}>
+					BanCoppel
+				</Typography>
+				<Typography sx={{ color: "#000000", fontSize: "16px" }}>
+					Eduardo Clemente López
+				</Typography>
+			</Box>
 			<Typography sx={{ color: "#000000" }} variant='h6'>
 				Recuerda
 			</Typography>
