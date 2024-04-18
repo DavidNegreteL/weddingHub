@@ -2,17 +2,8 @@
 
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { useFormik } from "formik";
-import * as yup from "yup";
 import { updateGuest } from "@/app/actions";
 import colors from "@/styles/colors";
-
-const validationSchema = yup.object({
-	attendeesField: yup
-		.number()
-		.min(1, "Incluyéndote a ti, el mínimo de invitados para confirmar es 1")
-		.required("Confirma a los asistentes por favor"),
-});
 
 function Confirm({
 	id,
@@ -24,22 +15,26 @@ function Confirm({
 	attendees: number;
 }) {
 	const [attendeesValue, setAttendeesValue] = useState<number>(attendees);
+	const [error, setError] = useState<string>("");
+
 	const handleSubmit = async (status: number) => {
 		if (status === 2) {
-			await updateGuest({ id, attendees: attendeesValue, status });
+			if (attendeesValue > attendees) {
+				setError(
+					`Sólo cuentas con ${attendees} boletos. Si crees que se trata de un error comunícate con Ara o Lalo`
+				);
+			} else if (attendeesValue < 1) {
+				setError(
+					"La cantidad mínima de boletos para confirmar tu asistencia es 1"
+				);
+			} else {
+				await updateGuest({ id, attendees: attendeesValue, status });
+			}
 		} else if (status === 3) {
 			await updateGuest({ id, attendees: 0, status });
 		}
 	};
-	const formik = useFormik({
-		initialValues: {
-			attendeesField: attendees,
-		},
-		validationSchema: validationSchema,
-		onSubmit: (values) => {
-			console.log(JSON.stringify(values, null, 2));
-		},
-	});
+
 	return (
 		<Box
 			sx={{
@@ -115,6 +110,31 @@ function Confirm({
 						}
 					</Typography>
 				</Box>
+				{error ? (
+					<Box
+						sx={{
+							width: "100%",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							borderRadius: "8px",
+							padding: "6px 10px",
+							backgroundColor: colors.error,
+						}}
+					>
+						<Typography
+							textAlign='center'
+							sx={{
+								width: "100%",
+								marginTop: "8px",
+								color: colors.white,
+								fontSize: "14px",
+							}}
+						>
+							{error}
+						</Typography>
+					</Box>
+				) : null}
 				<Box
 					sx={{
 						display: "flex",
