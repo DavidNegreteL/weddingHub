@@ -18,12 +18,13 @@ function Confirm({
 	const [error, setError] = useState<string>("");
 
 	const handleSubmit = async (status: number) => {
+		console.log(attendeesValue);
 		if (status === 2) {
 			if (attendeesValue > attendees) {
 				setError(
 					`Sólo cuentas con ${attendees} boletos. Si crees que se trata de un error comunícate con Ara o Lalo`
 				);
-			} else if (attendeesValue < 1) {
+			} else if (attendeesValue < 1 || isNaN(attendeesValue)) {
 				setError(
 					"La cantidad mínima de boletos para confirmar tu asistencia es 1"
 				);
